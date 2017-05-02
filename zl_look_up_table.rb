@@ -16,16 +16,11 @@ class ZlLookUpTable
 	
 		#Prologue
 	
-		coke = ZlItem.new "coke", "a can of COKE", nil, "self", true, 1, 1,
-			"You feel refreshed!"
-		chair = ZlItem.new "chair", "a round CHAIR", nil, "self", false, 0, -1,
-			"You took a short rest"
-		notice_board = ZlItem.new "noticeboard", "a school NOTICEBOARD", nil, "self", 
-			false, 0, -1,
-			"The noticeboard says 'Go to Course Admin Office to hand in assignments'."
-		vending_machine = ZlItem.new "vendingmachine", "a VENDINGMACHINE", nil, "self",
-			false, 0, -1,
-			"You forgot to bring money."
+		coke = ZlItem.new "coke", "a can of COKE", "You feel refreshed!", portable: true, weight: 1, charge: 1
+		
+		chair = ZlItem.new "chair", "a round CHAIR", "You took a short rest"
+		notice_board = ZlItem.new "noticeboard", "a school NOTICEBOARD", "The noticeboard says 'Go to Course Admin Office to hand in assignments'."
+		vending_machine = ZlItem.new "vendingmachine", "a VENDINGMACHINE", "You forgot to bring money."
 			
 		outside = ZlRoom.new 1, "Cornwalis Front", "the computing lobby"
 		theatre = ZlRoom.new 2, "Lecture Room 1", "a lecture theatre"
@@ -63,15 +58,13 @@ class ZlLookUpTable
 			]
 		
 		#Level 1
-		fireplace = ZlItem.new "fireplace", "a large, unlit FIREPLACE",
-			"a large, burning FIREPLACE", "fire", false, 0, -1, nil
-		torch = ZlItem.new "torch", "a burning TORCH", nil, "fire", true, 2, -1,
-			"The fire is lit."
-		rat = ZlItem.new "rat", "a fresh RAT corpse", nil, "gnome", true, 1, 1, nil
-		wine = ZlItem.new "wine", "a bottle of fine WINE", nil, "self", true, 2, 1, 
-			"It had already oxidized to vinegar..."
-		flame_thrower = ZlItem.new "flamethrower", "a hefty FLAMETHROWER", nil, "fire", 
-			true, 10, 3, "Target is incinerated."			
+		fireplace = ZlItem.new "fireplace", "a large, unlit FIREPLACE", nil,
+			description2: "a large, burning FIREPLACE", type: "fire"
+		torch = ZlItem.new "torch", "a burning TORCH", "The fire is lit.", type: "fire", portable: true, weight: 2
+		rat = ZlItem.new "rat", "a fresh RAT corpse", nil, type: "gnome", portable: true, weight: 1, charge: 1
+		wine = ZlItem.new "wine", "a bottle of fine WINE", "It had already oxidized to vinegar...", portable: true, weight: 2, charge: 1
+			
+		flame_thrower = ZlItem.new "flamethrower", "a hefty FLAMETHROWER", "Target is incinerated.", type: "fire", portable: true, weight: 10, charge: 3
 		
 		a2 = ZlRoom.new 7, "Dining hall", "a large dining hall"
 		a3 = ZlRoom.new 8, "Store room", "a musty store room"

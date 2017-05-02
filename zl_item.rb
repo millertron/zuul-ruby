@@ -3,20 +3,25 @@ class ZlItem
 				:location, :type, :portable, :evolved,
 				:charge, :weight, :effect_message
 				
-	def initialize name, description, description2, type, portable, weight, charge, effect_message
+	def initialize name, description, effect_message, options={}
 		@name = name
 		@description = description
-		@description2 = description2
-		@type = type
-		@portable = portable
-		@weight = weight
-		@charge = charge
+		@description2 = options[:description2]
+		@type = options[:type] || "self"
+		@portable = options[:portable] || false
+		@weight = options[:weight] || 0
+		@charge = options[:charge] || -1
 		@effect_message = effect_message
 	end
 	
 	def replicate
-		replica = ZlItem.new @name, @description, @description2, @type, 
-					@portable, @weight, @charge, @effect_message
+		replica = ZlItem.new @name, @description, @effect_message, 
+			description2: @description2, 
+			type: @type, 
+			portable: @portable, 
+			weight: @weight, 
+			charge: @charge, 
+			effect_message: @effect_message
 	end
 	
 	def is_compatible_with?(another_item)
