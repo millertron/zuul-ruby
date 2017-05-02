@@ -13,9 +13,7 @@ class ZlAftermath < ZlQuestComponent
 	def execute
 		case type
 		when "print" then
-			@messages.each do |message|
-				puts message
-			end
+			@messages.each { |message| puts message }
 		when "hint" then
 			hint = String.new
 			@messages.each do |message|

@@ -177,9 +177,7 @@ class ZlGame
 			puts "Your inventory is currently empty."
 			puts "Use the take command to pick up items from a room."
 		else
-			@player.inventory.each do |item|
-				puts "#{item.name} : #{item.description}"
-			end
+			@player.inventory.each { |item|	puts "#{item.name} : #{item.description}" }
 		end
 	end
 	
@@ -256,11 +254,7 @@ class ZlGame
 	end
 	
 	def talk_to_gnome
-		if @player.current_room.is_gnome_present? then
-			puts @gnome.retort
-		else
-			puts "There's no-one to talk to."
-		end
+		puts @player.current_room.is_gnome_present? ? @gnome.retort : "There's no-one to talk to."
 	end
 	
 	def quit command

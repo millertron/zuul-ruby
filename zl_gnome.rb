@@ -20,9 +20,7 @@ class ZlGnome
 	
 	def retort
 		str = "Gnome: " << @retorts[@level][@count]
-		if (@count + 1 < @retorts[@level].length) then
-			@count += 1
-		end
+		@count += 1 unless (@count + 1 >= @retorts[@level].length)
 		str
 	end
 	
